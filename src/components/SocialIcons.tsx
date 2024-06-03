@@ -47,18 +47,18 @@ export function ExternalLinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     >
       <path
         d="M30.5001 7.50019C3.00014 7.00016 2.5 10.5 3.00004 38.5001"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M121 152.5C147.918 153.056 148 150 148 121"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M2.99998 126C2.5 152.5 6.49999 153 36.5 152.5"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
-      <path d="M151.5 2L64 89" stroke-linecap="round" />
-      <path d="M151 51.9997L151.5 2.5M101 2H151.5" stroke-linecap="round" />
+      <path d="M151.5 2L64 89" strokeLinecap="round" />
+      <path d="M151 51.9997L151.5 2.5M101 2H151.5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -77,18 +77,18 @@ export function ExternalLinkIcon2(
     >
       <path
         d="M62 6.50032H30.0632C2.56316 6.00029 2.06301 9.50012 2.56306 37.5002V124.5"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M120.563 151.5C146 152.5 147.563 149 147.563 120L147.563 91.5001"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M2.56302 125C2.06305 151.5 6.06303 152 36.063 151.5C68.7087 151.5 133.5 151.5 133.5 151.5"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
-      <path d="M150.5 4L63 91" stroke-linecap="round" />
-      <path d="M152 51.9997L152.5 2.5M102 2H152.5" stroke-linecap="round" />
+      <path d="M150.5 4L63 91" strokeLinecap="round" />
+      <path d="M152 51.9997L152.5 2.5M102 2H152.5" strokeLinecap="round" />
     </svg>
   )
 }
