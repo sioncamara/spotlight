@@ -19,6 +19,10 @@ const projects = [
       href: 'https://flow-reader-rose.vercel.app/',
       label: 'flow-reader-rose.vercel.app',
     },
+    gitLink: {
+      href: 'https://github.com/sioncamara/flow-reader',
+      label: 'github.com',
+    },
     logo: flowReader,
     motivation: 'flow-reader',
   },
@@ -102,11 +106,17 @@ export default function Projects() {
               <LinkIcon className="h-6 w-6 flex-none" />
               <span className="ml-2">{project.link.label}</span>
             </p>
+            <Link
+              href={project.gitLink?.href || '#'}
+              className="relative z-30 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkIcon className="h-6 w-6 flex-none" />
+              <span className="ml-2">{project.gitLink?.label}</span>
+            </Link>
             {project.motivation && (
-              <div
-                aria-hidden="true"
-                className="relative z-30 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200"
-              >
+              <div className="relative z-30 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
                 <Link href={`/projects/${project.motivation}`}>
                   Technical details
                 </Link>

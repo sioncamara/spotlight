@@ -71,7 +71,7 @@ export default function Resume() {
         <Document
           file={pdfFile}
           loading={''}
-          className="-mt-8 dark:bg-black"
+          className="-mt-4 sm:-mt-8 dark:bg-black"
           options={options}
         >
           <Page pageNumber={1} width={containerWidth} loading={''} />

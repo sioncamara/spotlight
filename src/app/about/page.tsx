@@ -111,7 +111,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="lg:pl-20">
+        <div className="pt-16 lg:pl-20 lg:pt-0">
           <ul role="list">
             <SocialLink
               href="https://github.com/sioncamara"
