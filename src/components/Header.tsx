@@ -264,7 +264,6 @@ export function Header() {
 
   let headerRef = useRef<React.ElementRef<'div'>>(null)
 
-
   return (
     <>
       <header
@@ -274,7 +273,6 @@ export function Header() {
           marginBottom: 'var(--header-mb)',
         }}
       >
-        
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"

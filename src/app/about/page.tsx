@@ -89,7 +89,7 @@ export default function About() {
               systems they are interacting with under the hood.
             </p>
             <p>
-              Earning my computer science degree at UW Madison was
+              Earning my <b>computer science</b> degree at UW Madison was
               intellectually rewarding, but there was a tendency to look down on
               UX and UI work as not {'"real"'} engineering. It took some time in
               the industry for me to reconcile my passion for delightful user
@@ -101,12 +101,13 @@ export default function About() {
             <p>
               {"I've"} immersed myself in front-end engineering, learning from
               respected educators like Josh Comeau and more controversial
-              figures like Theo. Over the past year and a half, my weekends have
-              been dedicated to understanding open-source libraries, building
-              web applications to consolidate my knowledge, and continually
-              improving my skills. Additionally, I have been working as a
-              Front-end Engineer at Target since graduating college, focusing on
-              internal applications for {"Target's"} supply chain.
+              figures like Theo. Over the past year and a half,{' '}
+              <b>my weekends</b> have been dedicated to understanding
+              open-source libraries, building web applications to consolidate my
+              knowledge, and continually improving my skills. Additionally, I
+              have been working as a Front-end <b>Engineer at Target</b> since
+              graduating college, focusing on internal applications for{' '}
+              {"Target's"} supply chain.
             </p>
           </div>
         </div>
