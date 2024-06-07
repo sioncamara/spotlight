@@ -55,6 +55,9 @@ importers:
       feed:
         specifier: ^4.2.2
         version: 4.2.2
+      file-loader:
+        specifier: ^6.2.0
+        version: 6.2.0(webpack@5.91.0)
       next:
         specifier: ^14.0.4
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1302,6 +1305,12 @@ packages:
         integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==,
       }
 
+  big.js@5.2.2:
+    resolution:
+      {
+        integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==,
+      }
+
   binary-extensions@2.3.0:
     resolution:
       {
@@ -1798,6 +1807,13 @@ packages:
         integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==,
       }
 
+  emojis-list@3.0.0:
+    resolution:
+      {
+        integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==,
+      }
+    engines: { node: '>= 4' }
+
   enhanced-resolve@5.16.1:
     resolution:
       {
@@ -2150,6 +2166,15 @@ packages:
         integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==,
       }
     engines: { node: ^10.12.0 || >=12.0.0 }
+
+  file-loader@6.2.0:
+    resolution:
+      {
+        integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==,
+      }
+    engines: { node: '>= 10.13.0' }
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
 
   fill-range@7.1.1:
     resolution:
@@ -2851,6 +2876,14 @@ packages:
       }
     hasBin: true
 
+  json5@2.2.3:
+    resolution:
+      {
+        integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==,
+      }
+    engines: { node: '>=6' }
+    hasBin: true
+
   jsx-ast-utils@3.3.5:
     resolution:
       {
@@ -2910,6 +2943,13 @@ packages:
         integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==,
       }
     engines: { node: '>=6.11.5' }
+
+  loader-utils@2.0.4:
+    resolution:
+      {
+        integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==,
+      }
+    engines: { node: '>=8.9.0' }
 
   locate-path@6.0.0:
     resolution:
@@ -5620,6 +5660,8 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
+  big.js@5.2.2: {}
+
   binary-extensions@2.3.0: {}
 
   boolbase@1.0.0: {}
@@ -5894,6 +5936,8 @@ snapshots:
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
+
+  emojis-list@3.0.0: {}
 
   enhanced-resolve@5.16.1:
     dependencies:
@@ -6261,6 +6305,12 @@ snapshots:
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
+
+  file-loader@6.2.0(webpack@5.91.0):
+    dependencies:
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.91.0
 
   fill-range@7.1.1:
     dependencies:
@@ -6702,6 +6752,8 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
+  json5@2.2.3: {}
+
   jsx-ast-utils@3.3.5:
     dependencies:
       array-includes: 3.1.8
@@ -6731,6 +6783,12 @@ snapshots:
   lines-and-columns@1.2.4: {}
 
   loader-runner@4.3.0: {}
+
+  loader-utils@2.0.4:
+    dependencies:
+      big.js: 5.2.2
+      emojis-list: 3.0.0
+      json5: 2.2.3
 
   locate-path@6.0.0:
     dependencies:

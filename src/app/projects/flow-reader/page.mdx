@@ -1,4 +1,5 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import VideoPlayer from '@/components/VideoPlayer'
 
 export const article = {
   author: 'Sion Wilks',
@@ -76,17 +77,7 @@ of ede's read aloud feature's functioanlity, specifically when one starts readin
 the assistive technology is currenently unintuitive when it is used properly it leads to an assistive reading experience that is in my opinion better than what's availble on the market
 most notably speechify and natural reader.
 
-<video
-  className="rounded-xl"
-  src={'/demo.mov'}
-  controlslist=" nodownload"
-  controls
-  autoPlay
-  mute
-  loop
-  playsInline
-  alt="Demo video"
-/>
+<VideoPlayer videoKey="readerDemo" />
 
 Argubly the hardest part about all of this wasn't the enggierning work--though this was challenging and a fantastic learning experience--the hardest point was figuring out how to effectively
 highlight text on a pdf as flawlessly as the best software available without hardly any information on the internet on how to do this. It took me about a month of trying out different

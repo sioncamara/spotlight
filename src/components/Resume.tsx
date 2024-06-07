@@ -39,11 +39,9 @@ export default function Resume() {
       }
     }
 
-    // Call updateWidth initially and on every resize
     updateWidth()
     window.addEventListener('resize', updateWidth)
 
-    // Cleanup the event listener when the component unmounts
     return () => window.removeEventListener('resize', updateWidth)
   }, [containerRef])
 
@@ -51,8 +49,6 @@ export default function Resume() {
     resolvedTheme === 'dark'
       ? '/Resume_2023_v2_dark.pdf'
       : '/Resume_2023_v2.pdf'
-
-  console.log(containerWidth)
 
   return (
     <div className=" mt-12 flex justify-center sm:px-8">

@@ -4,20 +4,24 @@ import Image from 'next/image'
 import { Card, ChevronRightIcon } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
+import markdownViewer from '@/images/logos/markdown-viewer.png'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
+import logoPorfolio from '@/images/avatar.ico'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import flowReader from '@/images/logos/flow-reader.png'
 import Link from 'next/link'
+import clsx from 'clsx'
 
 const projects = [
   {
     name: 'Flow Reader',
-    description:
-      'Built an application to improve my reading experience by having it read for me.',
+    description: {
+      content:
+        'Built an application to improve my reading experience by having it read for me.',
+    },
     link: {
       href: 'https://flow-reader-rose.vercel.app/',
-      label: 'flow-reader-rose.vercel.app',
+      label: 'flowreader.app',
     },
     gitLink: {
       href: 'https://github.com/sioncamara/flow-reader',
@@ -27,30 +31,48 @@ const projects = [
     motivation: 'flow-reader',
   },
   {
-    name: 'Animaginary',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
+    name: 'Blue-bird',
+    description: {
+      content:
+        'Project from <span class="group-hover/desc:text-teal-500 hover:underline">egghead.io</span>. I used the videos in this course as primers for next.js app router and supabase (backend as a service) documentation.',
+      hasLink: true,
+      link: 'https://egghead.io/courses/build-a-twitter-clone-with-the-next-js-app-router-and-supabase-19bebadb',
+    },
+    link: {
+      href: 'https://blue-bird-psi-nine.vercel.app/',
+      label: 'bluebird.app',
+    },
+    gitLink: {
+      href: 'https://github.com/sioncamara/blue-bird',
+      label: 'github.com',
+    },
     logo: logoAnimaginary,
   },
   {
-    name: 'HelioStream',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
+    name: 'Porfolio',
+    description: {
+      content: 'The website you are looking at right now.\n\nBuilt with a professional user experience in mind.',
+    },
     link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+    logo: logoPorfolio,
+    motivation: 'portfolio',
   },
   {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
+    name: 'Markdown Viewer',
+    description: {
+      content:
+        'A simple markdown editor built with next.js and tailwindcss used for listening to responses from chabots efficiently. ',
+    },
+    link: { href: 'https://custom-md-viewer.vercel.app/', label: 'mdviewer.app' },
+    gitLink: { href: 'https://github.com/sioncamara/Custom-MD-Viewer', label: 'github.com' },
+    logo: markdownViewer,
   },
   {
     name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
+    description: {
+      content:
+        'The schematics for the first rocket I designed that successfully made it to orbit.',
+    },
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
   },
@@ -101,28 +123,51 @@ export default function Projects() {
                 {project.name}
               </Card.Link>
             </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
-            </p>
-            <Link
-              href={project.gitLink?.href || '#'}
-              className="relative z-30 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Card.Description
+              className={
+                project.description.hasLink ? 'group/desc peer/desc z-30' : ''
+              }
             >
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.gitLink?.label}</span>
-            </Link>
+              {project.description.hasLink ? (
+                <a
+                  className="block"
+                  href={project.description.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dangerouslySetInnerHTML={{
+                    __html: project.description.content,
+                  }}
+                />
+              ) : (
+                project.description.content
+              )}
+            </Card.Description>
+            {project.gitLink && (
+              <Link
+                href={project.gitLink?.href || '#'}
+                className="peer/gitLink relative z-30 order-2 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkIcon className="h-6 w-6 flex-none" />
+                <span className="ml-2">{project.gitLink?.label}</span>
+              </Link>
+            )}
             {project.motivation && (
-              <div className="relative z-30 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
-                <Link href={`/projects/${project.motivation}`}>
-                  Technical details
-                </Link>
+              <div className="peer/mot  z-30 order-3 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
+                <Link href={`/projects/${project.motivation}`}>Read more</Link>
                 <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
               </div>
             )}
+            <p
+              className={clsx(
+                'relative z-10 order-1 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200',
+                'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/mot:text-zinc-400',
+              )}
+            >
+              <LinkIcon className="h-6 w-6 flex-none" />
+              <span className="ml-2">{project.link.label}</span>
+            </p>
           </Card>
         ))}
       </ul>

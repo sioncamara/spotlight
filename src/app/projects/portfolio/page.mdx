@@ -1,0 +1,98 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import ExternalLink from "@/components/ExternalLink"
+import VideoPlayer from '@/components/VideoPlayer'
+
+
+
+export const article = {
+  author: 'Sion Wilks',
+  date: '2024-02-28',
+  title: 'Building of a template',
+  description:
+    'This portfolio website is a customization based on the tawild UI Spotlight template',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+In additional, to highlighting my technical achievemnts this portfolio site demonstrats an ability to quickly make meaningful changes within an existing code base
+
+This portfolio website is a result of me adding additional functionality to the Tailwind UI's <ExternalLink href="https://tailwindui.com/templates/spotlight" content={"Spotlight template"} />
+as well as removing non-essential aspects.
+## Most notible enchancements:
+
+### Resume displayer
+
+Instead of having to download my resume to view it I used react-pdf, which I had experience from my flow reader project, to display my resume directly within the site.
+
+ <details>
+  <summary style={{ cursor: 'pointer' }}>Technical details</summary>
+```jsx
+return (
+    <div className=" mt-12 flex justify-center sm:px-8">
+      <div
+        ref={containerRef}
+        className="flex w-full max-w-7xl flex-col lg:px-8"
+      >
+        <Link
+          href="Resume_2023_v2.pdf"
+          className="z-10 self-center"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 " />
+        </Link>
+        <Document
+          file={pdfFile}
+          loading={''}
+          className="-mt-4 sm:-mt-8 dark:bg-black"
+          options={options}
+        >
+          <Page pageNumber={1} width={containerWidth} loading={''} />
+        </Document>
+      </div>
+    </div>
+  )
+  ```
+
+The most challenging part of this feature was getting the resume to display with the correct width within sites borders.
+This required the following use effect function:
+
+```jsx
+useEffect(() => {
+  const updateWidth = () => {
+    if (containerRef.current) {
+      const style = window.getComputedStyle(containerRef.current)
+      const contentWidth =
+        containerRef.current.offsetWidth -
+        (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight))
+      setContainerWidth(contentWidth)
+    }
+  }
+
+  updateWidth()
+  window.addEventListener('resize', updateWidth)
+
+  return () => window.removeEventListener('resize', updateWidth)
+}, [containerRef])
+```
+
+and some advanced knowledge of css layout algorithm interactions.
+
+  </details>
+
+I also included the ability to download my resume if need be with an interactive button that looks to be part of the resume.
+
+### enhcancing card links
+
+within the projects page I made it so the cards can handle more than one link. The card has a default link the highlights when the user hovers of the card 
+<VideoPlayer videoKey="cardHover" />
+
+
+more text
