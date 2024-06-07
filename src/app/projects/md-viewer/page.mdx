@@ -1,0 +1,53 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import ExternalLink from "@/components/ExternalLink"
+import VideoPlayer from '@/components/VideoPlayer'
+
+
+
+export const article = {
+  author: 'Sion Wilks',
+  date: '2024-02-28',
+  title: 'Improving my developer workflow',
+  description:
+    'A simple markdown editor presented as a viewer for the purpose of efficiently listneting to generated responses',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+This is the simples of the projects mentioned on this website, but does a great job of a capacity to imporove developer experience, 
+which I have also done for the team I work on at Target.
+
+I build this because I was using a generic markdown editor for this purposes and was getting frustrated
+by the hundreds of clicks I was doing a day to listen to responses and desired to reduce them significnatly,
+ which I successfuly did.
+
+The primary purposes of this project is to take a response from a chatbot within the <ExternalLink href="https://www.cursor.com/" content="cursor IDE" />.
+<VideoPlayer videoKey="mdDemo" large/>
+
+
+After copying a response, I will go to the md application and use mircosoft edge's in build <ExternalLink href="https://www.microsoft.com/en-us/edge/features/read-aloud?form=MA13FJ" content="read aloud feature" />
+to listen to the response.
+
+I set up the application on initial page load and refresh take whatever is in the users clip board for less clicks.
+This allows me to replace the current content with two commands (command + r, command + shift + u).
+
+<VideoPlayer videoKey="mdDemo2" large/>
+
+I'll often find myself asking a chatbot questions about two seperate topics,
+and will listen to the response for one topic while the chatbot generates the response
+for the question I just asked about the other topic.
+
+This application has allowed me to better harness the new capabilities of chatbots
+primarly leading to much faster rates of learning what I don't know and being made aware
+of things that are important that I didn't even know I didn't know.
+
+Take two: 
+This application has allowed me to better harness the new capabilities of chatbots
+to improve my skills as a front-end developer at a rate previsouly not possible.

@@ -3,11 +3,9 @@ import Image from 'next/image'
 
 import { Card, ChevronRightIcon } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
+import twitter from '@/images/logos/twitter.png'
 import markdownViewer from '@/images/logos/markdown-viewer.png'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoPorfolio from '@/images/avatar.ico'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import flowReader from '@/images/logos/flow-reader.png'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -28,13 +26,13 @@ const projects = [
       label: 'github.com',
     },
     logo: flowReader,
-    motivation: 'flow-reader',
+    readMore: 'flow-reader',
   },
   {
     name: 'Blue-bird',
     description: {
       content:
-        'Project from <span class="group-hover/desc:text-teal-500 hover:underline">egghead.io</span>. I used the videos in this course as primers for next.js app router and supabase (backend as a service) documentation.',
+        'A twitter clone project from <span class="group-hover/desc:text-teal-500 hover:underline">egghead.io</span>. I used the videos in this course as primers for next.js app router and supabase (backend as a service) documentation.',
       hasLink: true,
       link: 'https://egghead.io/courses/build-a-twitter-clone-with-the-next-js-app-router-and-supabase-19bebadb',
     },
@@ -46,7 +44,7 @@ const projects = [
       href: 'https://github.com/sioncamara/blue-bird',
       label: 'github.com',
     },
-    logo: logoAnimaginary,
+    logo: twitter,
   },
   {
     name: 'Porfolio',
@@ -55,7 +53,7 @@ const projects = [
     },
     link: { href: '#', label: 'github.com' },
     logo: logoPorfolio,
-    motivation: 'portfolio',
+    readMore: 'portfolio',
   },
   {
     name: 'Markdown Viewer',
@@ -66,16 +64,8 @@ const projects = [
     link: { href: 'https://custom-md-viewer.vercel.app/', label: 'mdviewer.app' },
     gitLink: { href: 'https://github.com/sioncamara/Custom-MD-Viewer', label: 'github.com' },
     logo: markdownViewer,
-  },
-  {
-    name: 'OpenShuttle',
-    description: {
-      content:
-        'The schematics for the first rocket I designed that successfully made it to orbit.',
-    },
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
-  },
+    readMore: 'md-viewer',
+  }
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -153,16 +143,16 @@ export default function Projects() {
                 <span className="ml-2">{project.gitLink?.label}</span>
               </Link>
             )}
-            {project.motivation && (
-              <div className="peer/mot  z-30 order-3 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
-                <Link href={`/projects/${project.motivation}`}>Read more</Link>
+            {project.readMore && (
+              <div className="peer/more  z-30 order-3 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
+                <Link href={`/projects/${project.readMore}`}>Read more</Link>
                 <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
               </div>
             )}
             <p
               className={clsx(
                 'relative z-10 order-1 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200',
-                'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/mot:text-zinc-400',
+                'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/more:text-zinc-400',
               )}
             >
               <LinkIcon className="h-6 w-6 flex-none" />

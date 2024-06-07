@@ -5,15 +5,21 @@ import { useState, useRef } from 'react'
 import readerDemo from '@/app/projects/flow-reader/reader-demo.mov'
 // @ts-ignore
 import cardHover from '@/app/projects/portfolio/card-hover.mov'
+// @ts-ignore
+import mdDemo from '@/app/projects/md-viewer/md-demo.mov'
+// @ts-ignore
+import mdDemo2 from '@/app/projects/md-viewer/md-demo2.mov'
 
 const videoMap: { [key: string]: string } = {
   readerDemo,
   cardHover,
+  mdDemo,
+  mdDemo2,
 }
 
 
 
-const VideoPlayer = ({ videoKey }: { videoKey: string }) => {
+const VideoPlayer = ({ videoKey, large }: { videoKey: string, large?: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(true)
 
@@ -30,7 +36,7 @@ const VideoPlayer = ({ videoKey }: { videoKey: string }) => {
   }
 
   return (
-    <div className="group relative max-w-xl">
+    <div className={`group relative ${large ? 'max-w-3xl' : 'max-w-xl'}`}>
       <video
         ref={videoRef}
         className="w-full rounded-xl"
