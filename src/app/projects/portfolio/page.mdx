@@ -1,13 +1,12 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-import ExternalLink from "@/components/ExternalLink"
+import ExternalLink from '@/components/ExternalLink'
 import VideoPlayer from '@/components/VideoPlayer'
-
-
+import resumeButton from './resume-button.png'
 
 export const article = {
   author: 'Sion Wilks',
-  date: '2024-02-28',
-  title: 'Building off a template',
+  date: '2024-06-05',
+  title: 'Enhancing an Existing Template',
   description:
     'This portfolio website is a customization based on the tawild UI Spotlight template',
 }
@@ -17,82 +16,205 @@ export const metadata = {
   description: article.description,
 }
 
-
-
 export default (props) => <ArticleLayout article={article} {...props} />
 
-In additional, to highlighting my technical achievemnts this portfolio site demonstrats an ability to quickly make meaningful changes within an existing code base
+In addition to highlighting my technical achievements, 
+this portfolio site demonstrates my ability to quickly make meaningful changes within an existing codebase by adding functionality to Tailwind UI's Spotlight template and removing non-essential aspects.
 
-This portfolio website is a result of me adding additional functionality to the Tailwind UI's <ExternalLink href="https://tailwindui.com/templates/spotlight" content={"Spotlight template"} />
-as well as removing non-essential aspects.
-## Most notible enchancements:
+## Most Notable Enhancements
 
-### Resume displayer
+### Resume Displayer
 
-Instead of having to download my resume to view it I used react-pdf, which I had experience from my flow reader project, to display my resume directly within the site.
+Instead of requiring users to download my resume to view it, I used `react-pdf`, a tool I had experience with from my [Flow Reader project](/projects/flow-reader), to display my resume directly within the site.
 
- <details>
+<details>
   <summary style={{ cursor: 'pointer' }}>Technical details</summary>
-```jsx
-return (
-    <div className=" mt-12 flex justify-center sm:px-8">
-      <div
-        ref={containerRef}
-        className="flex w-full max-w-7xl flex-col lg:px-8"
-      >
-        <Link
-          href="Resume_2023_v2.pdf"
-          className="z-10 self-center"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 " />
-        </Link>
-        <Document
-          file={pdfFile}
-          loading={''}
-          className="-mt-4 sm:-mt-8 dark:bg-black"
-          options={options}
-        >
-          <Page pageNumber={1} width={containerWidth} loading={''} />
-        </Document>
-      </div>
-    </div>
-  )
+
+  The most challenging part of this feature was getting the resume to display with the correct width within the site's borders. This required the following useEffect function:
+
+  ```jsx
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const style = window.getComputedStyle(containerRef.current)
+        const contentWidth =
+          containerRef.current.offsetWidth -
+          (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight))
+        setContainerWidth(contentWidth)
+      }
+    }
+
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [containerRef])
   ```
 
-The most challenging part of this feature was getting the resume to display with the correct width within sites borders.
-This required the following use effect function:
+  and some advanced knowledge of CSS layout algorithm interactions.
 
-```jsx
-useEffect(() => {
-  const updateWidth = () => {
-    if (containerRef.current) {
-      const style = window.getComputedStyle(containerRef.current)
-      const contentWidth =
-        containerRef.current.offsetWidth -
-        (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight))
-      setContainerWidth(contentWidth)
-    }
-  }
+</details>
 
-  updateWidth()
-  window.addEventListener('resize', updateWidth)
+I also included an interactive button for downloading my resume if needed, which integrates seamlessly with the resume display.
+<Image src={resumeButton}/>
 
-  return () => window.removeEventListener('resize', updateWidth)
-}, [containerRef])
-```
+### Enhancing Card Links
 
-and some advanced knowledge of css layout algorithm interactions.
+Within the projects page, I enabled the cards to handle multiple links. The card has a default link that highlights when the user hovers over the card, and additional links that highlight when hovered over individually.
 
-  </details>
-
-I also included the ability to download my resume if need be with an interactive button that looks to be part of the resume.
-
-### enhcancing card links
-
-within the projects page I made it so the cards can handle more than one link. The card has a default link the highlights when the user hovers of the card 
 <VideoPlayer videoKey="cardHover" />
 
+The challenging part was ensuring the default link does not highlight when hovering over a different link.
 
-more text
+<details>
+  <summary style={{ cursor: 'pointer' }}>Technical details</summary>
+
+  I had to learn how to achieve this and discovered that CSS allows styling changes based on sibling states. Tailwind provides convenient <ExternalLink href="https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-sibling-state" content="peer utility classes" /> for this.
+
+  I utilized this utility in this part of my code:
+
+  ```ts
+  <Link
+    href={project.link.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={clsx(
+      'peer/pl relative z-30 mt-6 flex cursor-pointer text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200',
+      '',
+    )}
+  >
+    <LinkIcon className="h-6 w-6 flex-none" />
+    <span className="ml-2">{project.link.label}</span>
+  </Link>
+
+  {
+    project.gitLink && (
+      <Link
+        href={project.gitLink.href}
+        className={clsx(
+          'peer/gitLink relative z-30 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200',
+          'peer-hover/pl:text-zinc-400',
+          !project.readMore &&
+            ' group-hover:text-teal-500 peer-hover/desc:text-zinc-400 peer-hover/pl:text-zinc-400',
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <LinkIcon className="h-6 w-6 flex-none" />
+        <span className="ml-2">{project.gitLink?.label}</span>
+      </Link>
+    )
+  }
+  {
+    project.readMore && (
+      <div
+        className={clsx(
+          'z-10 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 group-hover:text-teal-500 dark:text-zinc-200',
+          'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/pl:text-zinc-400',
+        )}
+      >
+        <span>Read more</span>
+        <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
+      </div>
+    )
+  }
+  ```
+
+</details>
+
+### Video Player
+
+While working on the enhancing card links section, I realized it would be much easier to explain the feature with a video rather than several images. Instead of using the browser's built-in video player, I customized it to resemble a GIF-like experience, which I prefer for viewing videos within articles.
+
+I couldn't easily find a plug-and-play component for the desired aesthetic, so I reverse-engineered one that Josh Comeau often uses in his technical blogs and course material, such as <ExternalLink href="https://www.joshwcomeau.com/react/use-deferred-value/" content="this one" />.
+
+<details>
+  <summary style={{ cursor: 'pointer' }}>Technical details</summary>
+
+  This enhancement was relatively easy to implement. There were two main steps:
+  1. Creating the player itself:
+
+  ```ts
+  const VideoPlayer = ({ videoKey, large }: { videoKey: string, large?: boolean }) => {
+    const videoRef = useRef<HTMLVideoElement>(null)
+    const [isPlaying, setIsPlaying] = useState(true)
+
+    const videoSrc = videoMap[videoKey]
+    
+    const togglePlayPause = () => {
+      if (videoRef?.current?.paused) {
+        videoRef.current.play()
+        setIsPlaying(true)
+      } else {
+        videoRef.current?.pause()
+        setIsPlaying(false)
+      }
+    }
+
+    return (
+      <div className={clsx('group relative', large ? 'max-w-3xl' : 'max-w-xl')}>
+        <video
+          ref={videoRef}
+          className={clsx('w-full rounded-xl', { 'opacity-75': !isPlaying })}
+          src={videoSrc}
+          style={{ clipPath: 'inset(2px 0px 2px 0px)' }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-label="Demo video"
+        />
+        <div
+          onMouseDown={togglePlayPause}
+          className="absolute inset-0 m-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-white opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {isPlaying ? (
+              <>
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </>
+            ) : (
+              <polygon points="5 3 19 12 5 21 5 3" />
+            )}
+          </svg>
+        </div>
+      </div>
+    )
+  }
+  ```
+
+  2. Learning that I needed to use the file loader package to import videos:
+
+  ```ts
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(mov|mp4|avi|mkv)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash].[ext]',
+          outputPath: 'static/media/',
+          publicPath: '/_next/static/media/',
+        },
+      },
+    })
+
+    return config
+  },
+  ```
+
+  I could have used Next.js' built-in static file server by placing the videos in the public folder, but I wanted to avoid this practice due to potential server abuse without authentication.
+
+</details>
+

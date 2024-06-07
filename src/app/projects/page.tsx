@@ -12,6 +12,34 @@ import clsx from 'clsx'
 
 const projects = [
   {
+    name: 'Porfolio',
+    description: {
+      content:
+        'The website you are looking at right now.\n\nBuilt with a professional user experience in mind.',
+    },
+    link: { href: '#', label: 'github.com' },
+    logo: logoPorfolio,
+    readMore: 'portfolio',
+  },
+  {
+    name: 'Blue-bird',
+    description: {
+      content:
+        'A Twitter clone project based on the  <span class="group-hover/desc:text-teal-500 hover:underline">egghead.io</span> course, used as a primer for understanding Next.js App Router, React Server Components, and Supabase documentation and technology.',
+      hasLink: true,
+      link: 'https://egghead.io/courses/build-a-twitter-clone-with-the-next-js-app-router-and-supabase-19bebadb',
+    },
+    link: {
+      href: 'https://blue-bird-psi-nine.vercel.app/',
+      label: 'bluebird.app',
+    },
+    gitLink: {
+      href: 'https://github.com/sioncamara/blue-bird',
+      label: 'github.com',
+    },
+    logo: twitter,
+  },
+  {
     name: 'Flow Reader',
     description: {
       content:
@@ -29,43 +57,22 @@ const projects = [
     readMore: 'flow-reader',
   },
   {
-    name: 'Blue-bird',
-    description: {
-      content:
-        'A twitter clone project from <span class="group-hover/desc:text-teal-500 hover:underline">egghead.io</span>. I used the videos in this course as primers for next.js app router and supabase (backend as a service) documentation.',
-      hasLink: true,
-      link: 'https://egghead.io/courses/build-a-twitter-clone-with-the-next-js-app-router-and-supabase-19bebadb',
-    },
-    link: {
-      href: 'https://blue-bird-psi-nine.vercel.app/',
-      label: 'bluebird.app',
-    },
-    gitLink: {
-      href: 'https://github.com/sioncamara/blue-bird',
-      label: 'github.com',
-    },
-    logo: twitter,
-  },
-  {
-    name: 'Porfolio',
-    description: {
-      content: 'The website you are looking at right now.\n\nBuilt with a professional user experience in mind.',
-    },
-    link: { href: '#', label: 'github.com' },
-    logo: logoPorfolio,
-    readMore: 'portfolio',
-  },
-  {
     name: 'Markdown Viewer',
     description: {
       content:
-        'A simple markdown editor built with next.js and tailwindcss used for listening to responses from chabots efficiently. ',
+        'A specialized markdown editor built with Next.js, react, and Tailwind CSS, designed to efficiently listen to chatbot responses.',
     },
-    link: { href: 'https://custom-md-viewer.vercel.app/', label: 'mdviewer.app' },
-    gitLink: { href: 'https://github.com/sioncamara/Custom-MD-Viewer', label: 'github.com' },
+    link: {
+      href: 'https://custom-md-viewer.vercel.app/',
+      label: 'mdviewer.app',
+    },
+    gitLink: {
+      href: 'https://github.com/sioncamara/Custom-MD-Viewer',
+      label: 'github.com',
+    },
     logo: markdownViewer,
     readMore: 'md-viewer',
-  }
+  },
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -87,8 +94,8 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      title="Projects I've worked on outside of work to improve my skills."
+      intro="Not only have these projects improved my skills, but they have also solved a personal problem for me, with the exception of the Twitter clone."
     >
       <ul
         role="list"
@@ -106,8 +113,14 @@ export default function Projects() {
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link
-                href={project.link.href}
-                target="_blank"
+                href={
+                  project.readMore
+                    ? `/projects/${project.readMore}`
+                    : project.gitLink
+                      ? project.gitLink.href
+                      : project.link.href
+                }
+                target={project.readMore ? '_self' : '_blank'}
                 rel="noopener noreferrer"
               >
                 {project.name}
@@ -132,10 +145,28 @@ export default function Projects() {
                 project.description.content
               )}
             </Card.Description>
+            <Link
+              href={project.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(
+                'peer/pl relative z-30 mt-6 flex cursor-pointer text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200',
+                '',
+              )}
+            >
+              <LinkIcon className="h-6 w-6 flex-none" />
+              <span className="ml-2">{project.link.label}</span>
+            </Link>
+
             {project.gitLink && (
               <Link
-                href={project.gitLink?.href || '#'}
-                className="peer/gitLink relative z-30 order-2 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200"
+                href={project.gitLink.href}
+                className={clsx(
+                  'peer/gitLink relative z-30 mt-2 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200',
+                  'peer-hover/pl:text-zinc-400',
+                  !project.readMore &&
+                    ' group-hover:text-teal-500 peer-hover/desc:text-zinc-400 peer-hover/pl:text-zinc-400',
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -144,20 +175,16 @@ export default function Projects() {
               </Link>
             )}
             {project.readMore && (
-              <div className="peer/more  z-30 order-3 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 hover:text-teal-500 dark:text-zinc-200">
-                <Link href={`/projects/${project.readMore}`}>Read more</Link>
+              <div
+                className={clsx(
+                  'z-10 mt-4 flex cursor-pointer items-center text-sm font-medium text-zinc-500 group-hover:text-teal-500 dark:text-zinc-200',
+                  'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/pl:text-zinc-400',
+                )}
+              >
+                <span>Read more</span>
                 <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
               </div>
             )}
-            <p
-              className={clsx(
-                'relative z-10 order-1 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200',
-                'peer-hover/desc:text-zinc-400 peer-hover/gitLink:text-zinc-400 peer-hover/more:text-zinc-400',
-              )}
-            >
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
-            </p>
           </Card>
         ))}
       </ul>

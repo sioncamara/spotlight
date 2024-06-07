@@ -9,9 +9,17 @@ import cardHover from '@/app/projects/portfolio/card-hover.mov'
 import mdDemo from '@/app/projects/md-viewer/md-demo.mov'
 // @ts-ignore
 import mdDemo2 from '@/app/projects/md-viewer/md-demo2.mov'
+// @ts-ignore
+import openBookDemo from '@/app/projects/flow-reader/open-book-demo.mov'
+// @ts-ignore
+import uploadBookDemo from '@/app/projects/flow-reader/upload-book-demo.mov'
+
+import clsx from 'clsx'
 
 const videoMap: { [key: string]: string } = {
   readerDemo,
+  openBookDemo,
+  uploadBookDemo,
   cardHover,
   mdDemo,
   mdDemo2,
@@ -36,12 +44,12 @@ const VideoPlayer = ({ videoKey, large }: { videoKey: string, large?: boolean })
   }
 
   return (
-    <div className={`group relative ${large ? 'max-w-3xl' : 'max-w-xl'}`}>
+    <div onMouseDown={togglePlayPause} className={clsx('group relative cursor-pointer', large ? 'max-w-3xl' : 'max-w-xl')}>
       <video
         ref={videoRef}
-        className="w-full rounded-xl"
+        className={clsx('w-full rounded-xl', { 'opacity-75': !isPlaying })}
         src={videoSrc}
-        style={{ clipPath: 'inset(0px 0px 2px 0px)' }}
+        style={{ clipPath: 'inset(2px 0px 2px 0px)' }}
         autoPlay
         muted
         loop
@@ -49,8 +57,8 @@ const VideoPlayer = ({ videoKey, large }: { videoKey: string, large?: boolean })
         aria-label="Demo video"
       />
       <div
-        onMouseDown={togglePlayPause}
-        className="absolute inset-0 m-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-white opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+        
+        className="absolute inset-0 m-auto pointer-events-none flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-white opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

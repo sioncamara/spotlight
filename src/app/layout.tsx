@@ -9,7 +9,7 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   title: {
     template: '%s - Sion Wilks',
-    default: 'Sion Wilks - Front End Software Engineer',
+    default: 'Sion Wilks - Front-End Software Engineer',
   },
   description:
     'I’m Sion, a front-end software engineer based in Minneapolis, MN. I currently work at Target where I work on internal applications and have worked on several non-trivial side projects',
