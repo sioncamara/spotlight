@@ -8,6 +8,10 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 import 'react-pdf/dist/esm/Page/TextLayer.css'
 import { CiSaveDown1 } from 'react-icons/ci'
 import Link from 'next/link'
+// @ts-ignore
+import resume from '@/app/resume/Resume_2024.pdf'
+// @ts-ignore
+import resumeDark from '@/app/resume/Resume_2024_dark.pdf'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -45,11 +49,6 @@ export default function Resume() {
     return () => window.removeEventListener('resize', updateWidth)
   }, [containerRef])
 
-  const pdfFile =
-    resolvedTheme === 'dark'
-      ? '/Resume_2023_v2_dark.pdf'
-      : '/Resume_2023_v2.pdf'
-
   return (
     <div className=" mt-12 flex justify-center sm:px-8">
       <div
@@ -57,7 +56,7 @@ export default function Resume() {
         className="flex w-full max-w-7xl flex-col lg:px-8"
       >
         <Link
-          href="Resume_2023_v2.pdf"
+          href="Resume_2024.pdf"
           className="z-10 self-center"
           target="_blank"
           rel="noopener noreferrer"
@@ -65,7 +64,7 @@ export default function Resume() {
           <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 " />
         </Link>
         <Document
-          file={pdfFile}
+          file={resolvedTheme === 'dark' ? resumeDark : resume}
           loading={''}
           className="-mt-4 sm:-mt-8 dark:bg-black"
           options={options}

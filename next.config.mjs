@@ -7,7 +7,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   webpack(config) {
     config.module.rules.push({
-      test: /\.(mov|mp4|avi|mkv)$/,
+      test: /\.(mov|mp4|avi|mkv|pdf)$/,
       use: {
         loader: 'file-loader',
         options: {
