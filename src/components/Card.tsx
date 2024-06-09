@@ -26,7 +26,10 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col justify-between items-start')}
+      className={clsx(
+        className,
+        'group relative flex flex-col items-start justify-between',
+      )}
     >
       {children}
     </Component>
@@ -75,7 +78,7 @@ Card.Description = function CardDescription({
   return (
     <p
       className={clsx(
-        'relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre-wrap',
+        'relative z-10 mt-2 whitespace-pre-wrap text-sm text-zinc-600 dark:text-zinc-400',
         className,
       )}
     >

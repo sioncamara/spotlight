@@ -1,8 +1,6 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-import ExternalLink from "@/components/ExternalLink"
+import ExternalLink from '@/components/ExternalLink'
 import VideoPlayer from '@/components/VideoPlayer'
-
-
 
 export const article = {
   author: 'Sion Wilks',
@@ -17,23 +15,25 @@ export const metadata = {
   description: article.description,
 }
 
-
-
 export default (props) => <ArticleLayout article={article} {...props} />
 
 This is the simplest of the projects mentioned on this website. Despite its simplicity, it significantly enhances my developer experience.
 
 I built this project because I was frustrated by the hundreds of clicks I made daily to listen to chatbot responses using a generic markdown editor. I aimed to reduce these clicks significantly, and I successfully accomplished this.
 
-The primary purpose of this project is to take a response from a chatbot within the <ExternalLink href="https://www.cursor.com/" content="Cursor IDE" /> 
+The primary purpose of this project is to take a response from a chatbot within the <ExternalLink href="https://www.cursor.com/" content="Cursor IDE" />
 
-<VideoPlayer videoKey="mdDemo" large/>
- 
-and, after copying the response, navigate to the markdown application. There, I use Microsoft Edge's built-in <ExternalLink href="https://www.microsoft.com/en-us/edge/features/read-aloud?form=MA13FJ" content="Read Aloud feature" /> to listen to the response.
+<VideoPlayer videoKey="mdDemo" large />
+and, after copying the response, navigate to the markdown application. There, I use
+Microsoft Edge's built-in <ExternalLink
+  href="https://www.microsoft.com/en-us/edge/features/read-aloud?form=MA13FJ"
+  content="Read Aloud feature"
+/> to listen to the response.
 
 I configured the application to automatically take the user's clipboard content on initial page load and refresh, minimizing clicks. This allows me to replace the current content with just two commands (Command + R, Command + Shift + U).
 
-<VideoPlayer videoKey="mdDemo2" large/>
-Often, I find myself asking a chatbot questions about two separate topics. I listen to the response for one topic while the chatbot generates the response for the other.
+<VideoPlayer videoKey="mdDemo2" large />
+Often, I find myself asking a chatbot questions about two separate topics. I listen
+to the response for one topic while the chatbot generates the response for the other.
 
 This application has enabled me to better utilize the capabilities of chatbots, significantly accelerating my learning process. It has helped me discover important information I was previously unaware of, thereby improving my skills as a front-end developer at an unprecedented rate.
