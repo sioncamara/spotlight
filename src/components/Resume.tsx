@@ -13,15 +13,11 @@ import resume from '@/app/resume/Resume_2024.pdf'
 // @ts-ignore
 import resumeDark from '@/app/resume/Resume_2024_dark.pdf'
 
-// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-//   'pdfjs-dist/build/pdf.worker.min.mjs',
-//   import.meta.url,
-// ).toString()
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url,
+).toString()
 
-
-
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs'
-console.log(pdfjs.GlobalWorkerOptions.workerSrc)
 export default function Resume() {
   const options = useMemo(
     () => ({

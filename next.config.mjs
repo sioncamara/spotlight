@@ -17,11 +17,6 @@ const nextConfig = {
           publicPath: '/_next/static/media/',
         },
       },
-    },
-    {
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: "javascript/auto",
     })
 
     return config
