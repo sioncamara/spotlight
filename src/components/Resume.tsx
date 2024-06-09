@@ -13,11 +13,15 @@ import resume from '@/app/resume/Resume_2024.pdf'
 // @ts-ignore
 import resumeDark from '@/app/resume/Resume_2024_dark.pdf'
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString()
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.mjs',
+//   import.meta.url,
+// ).toString()
 
+
+
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs'
+console.log(pdfjs.GlobalWorkerOptions.workerSrc)
 export default function Resume() {
   const options = useMemo(
     () => ({
@@ -27,7 +31,7 @@ export default function Resume() {
     [],
   )
 
-  let { resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
@@ -56,7 +60,7 @@ export default function Resume() {
         className="flex w-full max-w-7xl flex-col lg:px-8"
       >
         <Link
-          href="Resume_2024.pdf"
+          href={resume}
           className="z-10 self-center"
           target="_blank"
           rel="noopener noreferrer"
