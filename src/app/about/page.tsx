@@ -36,7 +36,7 @@ function SocialLink({
         <span className="ml-4">{children}</span>
         {/* <ExternalLinkIcon className="h-2 w-2 ml-0 flex-none stroke-zinc-800 stroke-[20] transition group-hover:stroke-teal-500" /> */}
         {includeExternalIcon && (
-          <ExternalLinkIcon className="ml-0 h-2 w-2 flex-none stroke-zinc-800 dark:stroke-zinc-200 stroke-[20] transition group-hover:stroke-teal-500" />
+          <ExternalLinkIcon className="ml-0 h-2 w-2 flex-none stroke-zinc-800 stroke-[20] transition group-hover:stroke-teal-500 dark:stroke-zinc-200" />
         )}
       </Link>
     </li>
