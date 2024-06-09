@@ -5,6 +5,21 @@ import remarkGfm from 'remark-gfm'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(mov|mp4|avi|mkv|pdf)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash].[ext]',
+          outputPath: 'static/media/',
+          publicPath: '/_next/static/media/',
+        },
+      },
+    })
+
+    return config
+  },
 }
 
 const withMDX = nextMDX({

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 
-function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+export function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -26,7 +26,7 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col items-start')}
+      className={clsx(className, 'group relative flex flex-col justify-between items-start')}
     >
       {children}
     </Component>
@@ -67,11 +67,18 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
 
 Card.Description = function CardDescription({
   children,
+  className,
 }: {
   children: React.ReactNode
+  className?: string
 }) {
   return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+    <p
+      className={clsx(
+        'relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre-wrap',
+        className,
+      )}
+    >
       {children}
     </p>
   )

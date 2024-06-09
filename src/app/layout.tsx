@@ -2,21 +2,19 @@ import { type Metadata } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import avatar from '@/images/avatar.ico'
 
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Spencer Sharp',
-    default:
-      'Spencer Sharp - Software designer, founder, and amateur astronaut',
+    template: '%s - Sion Wilks',
+    default: 'Sion Wilks - Front-End Software Engineer',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
-  alternates: {
-    types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-    },
+    'I’m Sion, a front-end software engineer based in Minneapolis, MN. I currently work at Target where I work on internal applications and have worked on several non-trivial side projects',
+  icons: {
+    icon: avatar.src,
   },
 }
 

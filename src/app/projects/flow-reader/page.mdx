@@ -1,0 +1,95 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import VideoPlayer from '@/components/VideoPlayer'
+import ExternalLink from "@/components/ExternalLink"
+
+export const article = {
+  author: 'Sion Wilks',
+  date: '2024-06-02',
+  title:
+    'Flow Reader: Empowering Those with Reading Difficulties through Assistive Technology',
+  description:
+    'Flow Reader is an assistive technology that uses AI to help you read faster, more accurately, and with less strain.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## Pausing the Project: More Useful to Me than Market Alternatives
+
+I've paused this side project as it became too much of a time commitment. I developed the application to a point where it is personally more useful to me than other solutions available on the market. Instead of trying to build enough functionality to make it intuitive for anyone to use, I've decided to use what I built to read books in a more enjoyable manner on the weekends.
+
+While the core functionality of the application is present, it requires some instruction and has a few gotchas. I would like to provide some context on the technology used and the complexity of the engineering work involved.
+
+## Demo:
+### Opening and listneing to a book
+<VideoPlayer videoKey="openBookDemo" large/>
+
+### Adding a new book to the library
+<VideoPlayer videoKey="uploadBookDemo" large/>
+
+## The easy part
+
+The easiest part of this application is evident when visiting the website. 
+Namely, the functionality of uploading a PDF and saving it to one's library (specific to the browser being used) with a neat 3D book cover, made possible in part through the open-source project: <ExternalLink href="https://github.com/scastiel/book-cover-3d" content="3D Book Cover"/> . 
+The most challenging aspect was figuring out how to convert the first page of an uploaded PDF file into an image.
+<details>
+  <summary style={{ cursor: 'pointer' }}>Get cover Image function</summary>
+```jsx
+export async function getCoverImage(page: PDFPageProxy): Promise<string> {
+  var scale = 1.5
+  var viewport = page.getViewport({ scale: scale })
+
+  const canvas = document.createElement("canvas")
+  const context = canvas.getContext("2d")
+  if (!context) throw new Error("Error generating canvas context")
+
+  canvas.width = viewport.width
+  canvas.height = viewport.height
+
+  const renderContext = {
+    canvasContext: context,
+    viewport: viewport,
+  }
+
+  return page
+    .render(renderContext)
+    .promise.then(() => {
+      const dataURL = canvas.toDataURL("image/png")
+      return dataURL
+    })
+    .catch((error) => {
+      throw error
+    })
+}
+```
+</details>
+
+## The harder part
+
+Getting the PDF to display in a resizable manner with features relevant to reading was significantly more challenging. 
+I delved deeply into the <ExternalLink href="https://github.com/wojtekmaj/react-pdf/tree/main/packages/react-pdf" content="react-pdf" /> source code to understand how to use their provided callback functions effectively. 
+This allowed me to implement features such as saving the cover of a PDF as an image, tracking the most recent page the user has visited, 
+and providing a user-friendly table of contents popover that appears when hovering over the eyeglass icon, which I designed using Figma. 
+Additionally, I utilized <ExternalLink href="https://github.com/bvaughn/react-window" content="React Window" /> to render only a limited number of PDF pages at a time, resulting in an almost instantaneous load experience for the user.
+
+## The hardest part is most unoticable
+
+Unfortunately, at this point in time, the application requires Microsoft's Edge browser for the read-aloud feature, which highlights the current word and sentence. 
+Users must be familiar with Edge's <ExternalLink href="https://www.microsoft.com/en-us/edge/features/read-aloud?form=MA13FJ" content="Read Aloud feature" />. 
+Additionally, after implementing React Window for faster load times, some of Edge's read-aloud features were disrupted. 
+Specifically, users must double-tap on a word to activate the highlighting functionality properly. 
+While using the assistive technology is currently unintuitive, when used correctly, it provides an assistive reading experience that, in my opinion, 
+surpasses what's available on the market, including Speechify and Natural Reader.
+
+<VideoPlayer videoKey="readerDemo" />
+
+Arguably, the most difficult aspect of this project wasn't the engineering work itself
+—though that was both challenging and an excellent learning experience—
+but rather figuring out how to highlight text on a PDF as flawlessly as the top software available. 
+With very little information available online, it took me about a month of trial and error to find the right solution.
+
+This process of experimenting with different approaches demonstrates a high level of perseverance in tackling a technical challenge.

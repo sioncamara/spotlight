@@ -6,9 +6,8 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 import {
   GitHubIcon,
-  InstagramIcon,
   LinkedInIcon,
-  XIcon,
+  ExternalLinkIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
 
@@ -17,20 +16,28 @@ function SocialLink({
   href,
   children,
   icon: Icon,
+  includeExternalIcon = true,
 }: {
   className?: string
   href: string
   icon: React.ComponentType<{ className?: string }>
   children: React.ReactNode
+  includeExternalIcon?: boolean
 }) {
   return (
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
         <span className="ml-4">{children}</span>
+        {/* <ExternalLinkIcon className="h-2 w-2 ml-0 flex-none stroke-zinc-800 stroke-[20] transition group-hover:stroke-teal-500" /> */}
+        {includeExternalIcon && (
+          <ExternalLinkIcon className="ml-0 h-2 w-2 flex-none stroke-zinc-800 dark:stroke-zinc-200 stroke-[20] transition group-hover:stroke-teal-500" />
+        )}
       </Link>
     </li>
   )
@@ -49,8 +56,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+  description: "Allow me to introduce myself: I'm Sion Wilks.",
 }
 
 export default function About() {
@@ -69,58 +75,65 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            {"Allow me to introduce myself: I'm Sion Wilks."}
           </h1>
-          <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+          <div className="-mb-16 mt-6 space-y-10 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I’ve loved making things for as long as I can remember, and wrote
-              my first program when I was 6 years old, just two weeks after my
-              mom brought home the brand new Macintosh LC 550 that I taught
-              myself to type on.
+              Unlike most engineers, I don’t enjoy building things just for the
+              sake of it, and I was never drawn to Legos growing up. Instead, I
+              was the kid who spent countless hours customizing my Android
+              phone, often dedicating more time to enhancing its user experience
+              than actually using it. I love creating things to derive tangible
+              value from them. For me, this means building interfaces and user
+              experiences that allow users to get the most out of the complex
+              systems they are interacting with under the hood.
             </p>
             <p>
-              The only thing I loved more than computers as a kid was space.
-              When I was 8, I climbed the 40-foot oak tree at the back of our
-              yard while wearing my older sister’s motorcycle helmet, counted
-              down from three, and jumped — hoping the tree was tall enough that
-              with just a bit of momentum I’d be able to get to orbit.
+              Earning my <b>computer science</b> degree at UW Madison was
+              intellectually rewarding, but there was a tendency to look down on
+              UX and UI work as not {'"real"'} engineering. It took some time in
+              the industry for me to reconcile my passion for delightful user
+              experiences with my desire to do serious engineering work. Once I
+              realized that front-end engineering can be as complex as back-end
+              engineering, but with a unique focus on user experience, I
+              embraced it fully.
             </p>
             <p>
-              I spent the next few summers indoors working on a rocket design,
-              while I recovered from the multiple surgeries it took to fix my
-              badly broken legs. It took nine iterations, but when I was 15 I
-              sent my dad’s Blackberry into orbit and was able to transmit a
-              photo back down to our family computer from space.
-            </p>
-            <p>
-              Today, I’m the founder of Planetaria, where we’re working on
-              civilian space suits and manned shuttle kits you can assemble at
-              home so that the next generation of kids really <em>can</em> make
-              it to orbit — from the comfort of their own backyards.
+              {"I've"} immersed myself in front-end engineering, learning from
+              respected educators like Josh Comeau and more controversial
+              figures like Theo. Over the past year and a half,{' '}
+              <b>my weekends</b> have been dedicated to understanding
+              open-source libraries, building web applications to consolidate my
+              knowledge, and continually improving my skills. Additionally, I
+              have been working as a <b>Front-end Engineer at Target</b> since
+              graduating college, focusing on internal applications for{' '}
+              {"Target's"} supply chain.
             </p>
           </div>
         </div>
-        <div className="lg:pl-20">
+        <div className="pt-16 lg:pl-20 lg:pt-0">
           <ul role="list">
-            <SocialLink href="#" icon={XIcon}>
-              Follow on X
-            </SocialLink>
-            <SocialLink href="#" icon={InstagramIcon} className="mt-4">
-              Follow on Instagram
-            </SocialLink>
-            <SocialLink href="#" icon={GitHubIcon} className="mt-4">
-              Follow on GitHub
-            </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
-              Follow on LinkedIn
+            <SocialLink
+              href="https://github.com/sioncamara"
+              icon={GitHubIcon}
+              className="mt-4"
+            >
+              View my GitHub
             </SocialLink>
             <SocialLink
-              href="mailto:spencer@planetaria.tech"
+              href="https://www.linkedin.com/in/sion-wilks"
+              icon={LinkedInIcon}
+              className="mt-4"
+            >
+              View my LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="mailto:sionwilks@gmail.com"
               icon={MailIcon}
+              includeExternalIcon={false}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              spencer@planetaria.tech
+              sionwilks@gmail.com
             </SocialLink>
           </ul>
         </div>
