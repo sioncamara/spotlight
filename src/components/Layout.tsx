@@ -1,6 +1,5 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import 'core-js/proposals/promise-with-resolvers'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
