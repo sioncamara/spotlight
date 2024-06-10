@@ -66,7 +66,7 @@ export default function Resume() {
         <Document
           file={resolvedTheme === 'dark' ? resumeDark : resume}
           loading={''}
-          className="-mt-4 sm:-mt-8 dark:bg-black"
+          className="-mt-2 sm:-mt-4 lg:-mt-5 dark:bg-black"
           options={options}
         >
           <Page pageNumber={1} width={containerWidth} loading={''} />
