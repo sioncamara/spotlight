@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import clsx from 'clsx'
 import { Container } from '@/components/Container'
+import avatar from '@/images/avatar.ico'
 
 function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -102,8 +104,53 @@ function ThemeToggle() {
   )
 }
 
+function AvatarContainer({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
+  return (
+    <div
+      className={clsx(
+        className,
+        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10',
+      )}
+      {...props}
+    />
+  )
+}
+
+function Avatar({
+  large = false,
+  className,
+  ...props
+}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
+  large?: boolean
+}) {
+  return (
+    <Link
+      href="/about"
+      aria-label="Home"
+      className={clsx(className, 'pointer-events-auto group')}
+      {...props}
+    >
+      <Image
+        src={avatar}
+        alt=""
+        sizes={large ? '4rem' : '2.25rem'}
+        className={clsx(
+          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
+          'transition-transform duration-300 group-hover:scale-110',
+        )}
+        priority
+      />
+    </Link>
+  )
+}
+
 export function Header() {
   let headerRef = useRef<React.ElementRef<'div'>>(null)
+  const pathname = usePathname();
+  const isProjectArticle = /^\/projects\/[\w-]+$/.test(pathname);
 
   return (
     <>
@@ -130,7 +177,11 @@ export function Header() {
             }}
           >
             <div className="relative flex gap-4">
-              <div className="flex flex-1"></div>
+              <div className="flex flex-1">{isProjectArticle && (
+                  <AvatarContainer>
+                    <Avatar />
+                  </AvatarContainer>
+                )}</div>
               <div className="flex flex-1 justify-center">
                 <DesktopNavigation className="pointer-events-auto  md:block" />
               </div>
