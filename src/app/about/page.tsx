@@ -89,11 +89,11 @@ export default function About() {
               systems they are interacting with under the hood.
             </p>
             <p>
-              Earning my <b>computer science</b> degree at UW Madison was
+              Earning my <b>computer science</b> degree at UW-Madison was
               intellectually rewarding, but there was a tendency to look down on
               UX and UI work as not {'"real"'} engineering. It took some time in
               the industry for me to reconcile my passion for delightful user
-              experiences with my desire to do serious engineering work. Once I
+              experiences with my desire to do intricate engineering work. Once I
               realized that front-end engineering can be as complex as back-end
               engineering, but with a unique focus on user experience, I
               embraced it fully.
@@ -108,6 +108,13 @@ export default function About() {
               have been working as a <b>Front-end Engineer at Target</b> since
               graduating college, focusing on internal applications for{' '}
               {"Target's"} supply chain.
+            </p>
+            <p>
+              A major factor in my rapid upskilling has been <b>leveraging</b> the 
+              latest <b>chatbot</b> capabilities, alongside cutting-edge tools and custom
+              workflow processes {"I've"} developed. This innovative approach has
+              significantly <b>accelerated</b> my <b>learning</b> and broadened my expertise
+              in front-end engineering.
             </p>
           </div>
         </div>
