@@ -17,7 +17,7 @@ const projects = [
       content:
         'The website you are looking at right now.\n\nBuilt with a professional user experience in mind.',
     },
-    link: { href: '#', label: 'github.com' },
+    link: { href: 'https://github.com/sioncamara/spotlight', label: 'github.com' },
     logo: logoPorfolio,
     readMore: 'portfolio',
   },
