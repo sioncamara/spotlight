@@ -1,6 +1,5 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import { useMemo, useEffect, useState, useRef } from 'react'
 import { pdfjs, Document, Page } from 'react-pdf'
 
@@ -10,8 +9,6 @@ import { CiSaveDown1 } from 'react-icons/ci'
 import Link from 'next/link'
 // @ts-ignore
 import resume from '@/app/resume/Resume_2024.pdf'
-// @ts-ignore
-import resumeDark from '@/app/resume/Resume_2024_dark.pdf'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -26,8 +23,6 @@ export default function Resume() {
     }),
     [],
   )
-
-  const { resolvedTheme } = useTheme()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
@@ -64,7 +59,7 @@ export default function Resume() {
           <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 " />
         </Link>
         <Document
-          file={resolvedTheme === 'dark' ? resumeDark : resume}
+          file={resume}
           loading={''}
           className="-mt-2 sm:-mt-4 lg:-mt-5 dark:bg-black"
           options={options}

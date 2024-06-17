@@ -34,7 +34,6 @@ function SocialLink({
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
         <span className="ml-4">{children}</span>
-        {/* <ExternalLinkIcon className="h-2 w-2 ml-0 flex-none stroke-zinc-800 stroke-[20] transition group-hover:stroke-teal-500" /> */}
         {includeExternalIcon && (
           <ExternalLinkIcon className="ml-0 h-2 w-2 flex-none stroke-zinc-800 stroke-[20] transition group-hover:stroke-teal-500 dark:stroke-zinc-200" />
         )}
@@ -79,24 +78,24 @@ export default function About() {
           </h1>
           <div className="-mb-16 mt-6 space-y-10 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              Unlike most engineers, I don’t enjoy building things just for the
-              sake of it, and I was never drawn to Legos growing up. Instead, I
-              was the kid who spent countless hours customizing my Android
-              phone, often dedicating more time to enhancing its user experience
-              than actually using it. I love creating things to derive tangible
-              value from them. For me, this means building interfaces and user
-              experiences that allow users to get the most out of the complex
-              systems they are interacting with under the hood.
+              While many engineers enjoy building for the sake of building, my
+              passion has always been in creating things that derive tangible
+              value. From a young age, I spent countless hours customizing my
+              Android phone, driven by a desire to enhance its user experience
+              rather than just use it. This early fascination with improving
+              usability has translated into a career focused on building
+              interfaces and user experiences that help users get the most out
+              of the complex systems they interact with.
             </p>
             <p>
               Earning my <b>computer science</b> degree at UW-Madison was
               intellectually rewarding, but there was a tendency to look down on
               UX and UI work as not {'"real"'} engineering. It took some time in
               the industry for me to reconcile my passion for delightful user
-              experiences with my desire to do intricate engineering work. Once I
-              realized that front-end engineering can be as complex as back-end
-              engineering, but with a unique focus on user experience, I
-              embraced it fully.
+              experiences with my desire to do intricate engineering work. Once
+              I realized that front-end engineering can be as complex as
+              back-end engineering, but with a unique focus on user experience,
+              I embraced it fully.
             </p>
             <p>
               {"I've"} immersed myself in front-end engineering, learning from
@@ -110,11 +109,12 @@ export default function About() {
               {"Target's"} supply chain.
             </p>
             <p>
-              A major factor in my rapid upskilling has been <b>leveraging</b> the 
-              latest <b>chatbot</b> capabilities, alongside cutting-edge tools and custom
-              workflow processes {"I've"} developed. This innovative approach has
-              significantly <b>accelerated</b> my <b>learning</b> and broadened my expertise
-              in front-end engineering.
+              A major factor in my rapid upskilling has been <b>leveraging</b>{' '}
+              the latest <b>chatbot</b> capabilities, alongside cutting-edge
+              tools and custom workflow processes {"I've"} developed. This
+              innovative approach has significantly <b>accelerated</b> my{' '}
+              <b>learning</b> and broadened my expertise in front-end
+              engineering.
             </p>
           </div>
         </div>
