@@ -56,7 +56,7 @@ export default function Resume() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 " />
+          <CiSaveDown1 className=" h-7 w-7 hover:text-teal-500 dark:text-gray-500 transform dark:translate-y-4" />
         </Link>
         <Document
           file={resume}
