@@ -1,28 +1,16 @@
 'use client'
 
 import { useState, useRef } from 'react'
-// @ts-ignore
-import readerDemo from '@/app/projects/flow-reader/reader-demo.mov'
-// @ts-ignore
-import cardHover from '@/app/projects/portfolio/card-hover.mov'
-// @ts-ignore
-import mdDemo from '@/app/projects/md-viewer/md-demo.mov'
-// @ts-ignore
-import mdDemo2 from '@/app/projects/md-viewer/md-demo2.mov'
-// @ts-ignore
-import openBookDemo from '@/app/projects/flow-reader/open-book-demo.mov'
-// @ts-ignore
-import uploadBookDemo from '@/app/projects/flow-reader/upload-book-demo.mov'
 
 import clsx from 'clsx'
 
 const videoMap: { [key: string]: string } = {
-  readerDemo,
-  openBookDemo,
-  uploadBookDemo,
-  cardHover,
-  mdDemo,
-  mdDemo2,
+  readerDemo: '/videos/reader-demo.mp4',
+  openBookDemo: '/videos/open-book-demo.mp4',
+  uploadBookDemo: '/videos/upload-book-demo.mp4',
+  cardHover: '/videos/card-hover.mp4',
+  mdDemo: '/videos/md-demo.mp4',
+  mdDemo2: '/videos/md-demo2.mp4',
 }
 
 const VideoPlayer = ({
