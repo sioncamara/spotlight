@@ -48,10 +48,7 @@ const projects = [
     link: {
       href: 'https://flow-reader-rose.vercel.app/',
       label: 'flowreader.app',
-    },
-    gitLink: {
-      href: 'https://github.com/sioncamara/flow-reader',
-      label: 'github.com',
+      isDefault: true,
     },
     logo: flowReader,
     readMore: 'flow-reader',
