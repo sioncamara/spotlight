@@ -8,7 +8,7 @@ import 'react-pdf/dist/esm/Page/TextLayer.css'
 import { CiSaveDown1 } from 'react-icons/ci'
 import Link from 'next/link'
 // @ts-ignore
-import resume from '@/app/resume/Resume_2024.pdf'
+import resume from '@/app/resume/Resume_2025.pdf'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',

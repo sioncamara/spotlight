@@ -55,7 +55,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export const metadata: Metadata = {
   title: 'About',
-  description: "Allow me to introduce myself: I'm Sion Wilks.",
+  description: "I’m Sion Wilks, a front-end engineer building interfaces where complexity disappears behind clarity.",
 }
 
 export default function About() {
@@ -74,47 +74,20 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            {"Allow me to introduce myself: I'm Sion Wilks."}
+            {"I’m Sion Wilks, a front-end engineer who builds interfaces where complexity disappears behind clarity."}
           </h1>
           <div className="-mb-16 mt-6 space-y-10 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              While many engineers enjoy building for the sake of building, my
-              passion has always been in creating things that derive tangible
-              value. From a young age, I spent countless hours customizing my
-              Android phone, driven by a desire to enhance its user experience
-              rather than just use it. This early fascination with improving
-              usability has translated into a career focused on building
-              interfaces and user experiences that help users get the most out
-              of the complex systems they interact with.
+              At Target, I’ve led the front end for internal supply-chain tools—modernizing legacy systems with React, TypeScript, and Figma-driven design systems. My work has ranged from building full scheduling modules that replaced vendor platforms to refectoring large codebases that cut feature delivery time by a third.
             </p>
             <p>
-              Earning my <b>computer science</b> degree at UW-Madison was
-              intellectually rewarding, but there was a tendency to look down on
-              UX and UI work as not {'"real"'} engineering. It took some time in
-              the industry for me to reconcile my passion for delightful user
-              experiences with my desire to do intricate engineering work. Once
-              I realized that front-end engineering can be as complex as
-              back-end engineering, but with a unique focus on user experience,
-              I embraced it fully.
+              Outside of work, I build projects that push my limits—like Flow Reader, a Next.js-based PDF reader with real-time text-to-speech synchronization, an experiment in precision timing, parsing, and accessibility. Alongside my engineering projects, I’ve also completed extensive business education, studying works like The Personal MBA and Running Lean and applying their principles through hands-on startup modeling and documentation.
             </p>
             <p>
-              {"I've"} immersed myself in front-end engineering, learning from
-              respected educators like Josh Comeau and more controversial
-              figures like Theo. Over the past year and a half,{' '}
-              <b>my weekends</b> have been dedicated to understanding
-              open-source libraries, building web applications to consolidate my
-              knowledge, and continually improving my skills. Additionally, I
-              have been working as a <b>Front-end Engineer at Target</b> since
-              graduating college, focusing on internal applications for{' '}
-              {"Target's"} supply chain.
+              I care deeply about human-centered engineering: designing elegant systems that serve real cognitive needs. I move fast, learn aggressively, and leverage new tools (from Cursor to AI-assisted workflows) to iterate at the edge of what’s possible in front-end architecture.
             </p>
             <p>
-              A major factor in my rapid upskilling has been <b>leveraging</b>{' '}
-              the latest <b>chatbot</b> capabilities, alongside cutting-edge
-              tools and custom workflow processes {"I've"} developed. This
-              innovative approach has significantly <b>accelerated</b> my{' '}
-              <b>learning</b> and broadened my expertise in front-end
-              engineering.
+              My long-term focus is applying these skills to domains that matter—particularly healthcare, education, and science, where usability and trust directly impact outcomes.
             </p>
           </div>
         </div>
