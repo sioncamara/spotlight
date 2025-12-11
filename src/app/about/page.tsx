@@ -84,10 +84,7 @@ export default function About() {
               Outside of work, I build projects that push my limits—like Flow Reader, a Next.js-based PDF reader with real-time text-to-speech synchronization, an experiment in precision timing, parsing, and accessibility. Alongside my engineering projects, I’ve also completed extensive business education, studying works like The Personal MBA and Running Lean and applying their principles through hands-on startup modeling and documentation.
             </p>
             <p>
-              I care deeply about human-centered engineering: designing elegant systems that serve real cognitive needs. I move fast, learn aggressively, and leverage new tools (from Cursor to AI-assisted workflows) to iterate at the edge of what’s possible in front-end architecture.
-            </p>
-            <p>
-              My long-term focus is applying these skills to domains that matter—particularly healthcare, education, and science, where usability and trust directly impact outcomes.
+              I care deeply about human-centered engineering: designing elegant systems that serve real cognitive needs. I move fast, learn aggressively, and leverage new tools (from Cursor to AI-assisted workflows) to iterate at the edge of what’s possible in front-end engineering.
             </p>
           </div>
         </div>
